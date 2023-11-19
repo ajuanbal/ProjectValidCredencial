@@ -45,5 +45,3 @@ Para utilizar el microservicio, realiza una solicitud al endpoint correspondient
 
 ---
 
-Puedes adaptar esta descripción según las características específicas de tu microservicio y agregar información adicional sobre cómo ejecutar, construir y desplegar el servicio.
-
