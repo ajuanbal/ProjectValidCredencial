@@ -19,7 +19,6 @@ public class CustomHealthIndicator implements HealthIndicator {
         int counter = cedulaService.getValidationTime();
 
         if (counter < 1000) {
-            System.out.println("xxxx");
             return Health.up().withDetail("Mensaje", "Contador en un nivel aceptable").build();
         } else {
             return Health.down().withDetail("Mensaje", "Contador demasiado alto").build();

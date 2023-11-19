@@ -17,6 +17,12 @@ public class CedulaService {
 
     private int validationTime = 0;
 
+    /**
+     * Método para validar una cédula ecuatoriana y medir su tiempo de ejecución.
+     *
+     * @param cedula Número de cédula a validar.
+     * @return Respuesta que indica si la cédula es válida o no, junto con detalles adicionales.
+     */
     @Timed(value = "CedulaService.validarCedula", description = "Tiempo de ejecución de customMethod")
     public Response validarCedula(String cedula) {
         // Utilizar StopWatch para medir el tiempo de ejecución

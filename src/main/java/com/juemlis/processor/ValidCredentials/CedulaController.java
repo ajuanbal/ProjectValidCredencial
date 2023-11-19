@@ -17,6 +17,12 @@ public class CedulaController {
     @Autowired
     private CedulaService cedulaService;
 
+    /**
+     * Endpoint para validar una cédula ecuatoriana.
+     *
+     * @param cedula Número de cédula a validar.
+     * @return Respuesta que indica si la cédula es válida o no, junto con detalles adicionales.
+     */
     @GetMapping("/validar-cedula/{cedula}")
     public Response validarCedula(@PathVariable String cedula) {
         logger.info("------ BEGIN REQUEST ----");
