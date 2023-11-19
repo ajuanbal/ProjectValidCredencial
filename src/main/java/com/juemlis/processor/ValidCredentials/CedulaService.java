@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StopWatch;
 
+import static java.lang.Thread.*;
+
 // Servicio
 @Service
 public class CedulaService {
@@ -24,7 +26,7 @@ public class CedulaService {
      * @return Respuesta que indica si la cédula es válida o no, junto con detalles adicionales.
      */
     @Timed(value = "CedulaService.validarCedula", description = "Tiempo de ejecución de customMethod")
-    public Response validarCedula(String cedula) {
+    public Response validarCedula(String cedula) throws InterruptedException {
         // Utilizar StopWatch para medir el tiempo de ejecución
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
@@ -45,6 +47,8 @@ public class CedulaService {
 
         // Paso 2: Extraer los dos primeros dígitos de la izquierda (región)
         isValidCredentials = validateRegion(Integer.parseInt(cedula.substring(0, 2)));
+
+        Thread.sleep(500);
 
         if (isValidCredentials && isNumeric && response.getErrorDescription() == null) {
             logger.info("Passed first filter");
@@ -81,8 +85,10 @@ public class CedulaService {
             response.setValid(false);
             response.setErrorDescription("La cédula no es valida");
         }
+        Thread.sleep(400);
         stopWatch.stop();
         validationTime += stopWatch.getTotalTimeMillis();
+        logger.info("Execution time: " + validationTime  );
         return response;
 
 

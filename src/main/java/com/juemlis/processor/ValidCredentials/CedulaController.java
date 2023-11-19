@@ -24,16 +24,18 @@ public class CedulaController {
      * @return Respuesta que indica si la cédula es válida o no, junto con detalles adicionales.
      */
     @GetMapping("/validar-cedula/{cedula}")
-    public Response validarCedula(@PathVariable String cedula) {
+    public Response validarCedula(@PathVariable String cedula) throws InterruptedException {
         logger.info("------ BEGIN REQUEST ----");
         logger.info("data: " + cedula);
         Response response = cedulaService.validarCedula(cedula);
         logger.info("validarCedula: " + response.getCedula());
+        logger.info("------ END REQUEST ----");
         if (response.isValid()) {
             return response;
         } else {
             return response;
         }
+
     }
 }
 
