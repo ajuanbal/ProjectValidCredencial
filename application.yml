@@ -10,3 +10,6 @@ logging:
   level:
     root: INFO
     com.juemlis.processor.ValidCredentials: INFO
+
+server:
+  port: 8081
